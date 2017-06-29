@@ -1,1 +1,37 @@
-Please build the search page here.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gem Search</title>
+  </head>
+  <body>
+    <h2>Search Gems</h2>
+    <div>
+      <%= form_tag search_path do %>
+        <input class="search" id="searchbar" name="query" placeholder="Search RubyGems" type="text" />
+      <% end %>
+    </div>
+    <div>
+      <% if !@rubygems %>
+        <%= "" %>
+      <% elsif !!@rubygem %>
+        <h4>Found Gem</h4>
+        <%= link_to @rubygem["name"], "https://rubygems.org/gems/#{@rubygem["name"]}", target: "_blank" %><img src="/images/star-gray.png" alt="star gray" />
+        <h4>Info</h4>
+        <%= @rubygem["info"] %>
+        <h4>Dependencies</h4>
+        <% if @rubygem["dependencies"]["development"].empty? %>
+          <%= "None" %>
+        <% else !!@rubygem["dependencies"]["development"] %>
+          <% dependencies = @rubygem["dependencies"]["development"] %>
+          <% dependencies.each do |x| %>
+            <div><%= link_to x["name"], "https://rubygems.org/gems/#{x["name"]}", target: "_blank" %><img src="/images/star-gray.png" alt="star gray" /></div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h4>Oh no! Looks like your gem wasn't found. Please check your spelling and try again.</h4>
+      <% end %>
+    </div>
+
+  </body>
+</html>
