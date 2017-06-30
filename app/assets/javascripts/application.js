@@ -26,12 +26,16 @@
 // })
 
 $(document).ready(function(){
-  $("#star-pic").on("click", function(){
-    if("images/star-blue.png"){
-      $("#star-pic").attr("src", "path/to/images/star-gray.png")
+
+  $("#star-pic").on("click", changeStar)
+
+  function changeStar(){
+    if($("#star-pic").attr("src") == "/assets/star-gray.png"){
+      $("star-pic").attr("src", "/assets/star-blue.png")
     }
-    else("images/star-gray.png"){
-      $("#star-pic").attr("src", "path/to/images/star-blue.png")
+    else{
+      $("star-pic").attr("src", "/assets/star-gray.png")
     }
-  })
+  }
+
 })
