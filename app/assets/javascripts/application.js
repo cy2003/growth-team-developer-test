@@ -14,3 +14,24 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+// $(function(){
+//   var starImages = [
+//     "images/star-blue.png",
+//     "images/star-gray.png"
+//   ]
+//   var star = $(".found-gem").find("img").attr("src")
+//
+//
+// })
+
+$(document).ready(function(){
+  $("#star-pic").on("click", function(){
+    if("images/star-blue.png"){
+      $("#star-pic").attr("src", "path/to/images/star-gray.png")
+    }
+    else("images/star-gray.png"){
+      $("#star-pic").attr("src", "path/to/images/star-blue.png")
+    }
+  })
+})

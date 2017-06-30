@@ -15,6 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def favorites
+    
   end
 
 end
