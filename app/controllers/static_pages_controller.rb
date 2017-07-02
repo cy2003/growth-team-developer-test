@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def favorites
-    
+    @favorite_gems = localStorage.getItem("rubygems")
   end
 
 end

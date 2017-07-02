@@ -1,10 +1,10 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+// This is a manifest file that"ll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or any plugin"s vendor/assets/javascripts directory can be referenced here using a relative path.
 //
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// It"s not advisable to add code directly here, but if you do, it"ll appear at the bottom of the
 // compiled file.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
@@ -15,27 +15,24 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-// $(function(){
-//   var starImages = [
-//     "images/star-blue.png",
-//     "images/star-gray.png"
-//   ]
-//   var star = $(".found-gem").find("img").attr("src")
-//
-//
-// })
 
 $(document).ready(function(){
 
-  $("#star-pic").on("click", changeStar)
+  var favorites = []
 
   function changeStar(){
-    if($("#star-pic").attr("src") == "/assets/star-gray.png"){
-      $("star-pic").attr("src", "/assets/star-blue.png")
+    if($(this).attr("src") == "/assets/star-gray.png"){
+      $(this).attr("src", "/assets/star-blue.png")
+      favorites.push($(this).closest("div").first().text().replace(/\s+/g, ''))
+      localStorage.setItem("rubygems", JSON.stringify(favorites))
     }
     else{
-      $("star-pic").attr("src", "/assets/star-gray.png")
+      $(this).attr("src", "/assets/star-gray.png")
+      favorites = favorites.filter(item => item !== $(this).closest("div").first().text().replace(/\s+/g, ''))
+      localStorage.setItem("rubygems", JSON.stringify(favorites))
     }
   }
+
+  $(".star-pic").on("click", changeStar)
 
 })

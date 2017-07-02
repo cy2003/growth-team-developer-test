@@ -1,4 +1,4 @@
-<h2>Search Gems</h2>
+<div><h2>Search Gems</h2></div>
 <div>
   <%= form_tag search_path do %>
     <input class="search" id="searchbar" name="query" placeholder="Search RubyGems" type="text" />
@@ -8,22 +8,30 @@
   <% if !@rubygems %>
     <%= "" %>
   <% elsif !!@rubygem %>
-    <h4>Found Gem</h4>
-    <div>
-      <%= link_to @rubygem["name"], "https://rubygems.org/gems/#{@rubygem["name"]}", target: "_blank" %><img id="star-pic" src="/assets/star-gray.png" alt="star pic" />
+    <div><h4>Found Gem</h4></div>
+    <div class="found-gem">
+      <div class="ruby-gem">
+        <%= link_to @rubygem["name"], "https://rubygems.org/gems/#{@rubygem["name"]}", target: "_blank" %><img class="star-pic" src="/assets/star-gray.png" alt="star pic"/>
+      </div>
     </div>
-    <h4>Info</h4>
-    <%= @rubygem["info"] %>
-    <h4>Dependencies</h4>
-    <% if @rubygem["dependencies"]["development"].empty? %>
-      <%= "None" %>
-    <% else !!@rubygem["dependencies"]["development"] %>
-      <% dependencies = @rubygem["dependencies"]["development"] %>
-      <% dependencies.each do |x| %>
-        <div class="dependencies-star"><%= link_to x["name"], "https://rubygems.org/gems/#{x["name"]}", target: "_blank" %><img src="/assets/star-gray.png" alt="star pic" /></div>
+    <div><h4>Info</h4></div>
+    <div><%= @rubygem["info"] %></div>
+    <div><h4>Dependencies</h4></div>
+    <div class="dependencies-gem">
+      <% if @rubygem["dependencies"]["development"].empty? %>
+        <%= "None" %>
+      <% else !!@rubygem["dependencies"]["development"] %>
+        <% dependencies = @rubygem["dependencies"]["development"] %>
+        <% dependencies.each do |x| %>
+          <div class="ruby-gem"><%= link_to x["name"], "https://rubygems.org/gems/#{x["name"]}", target: "_blank" %><img class="star-pic" src="/assets/star-gray.png" alt="star pic" />
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% else %>
-    <h4>Oh no! Looks like your gem wasn't found. Please check your spelling and try again.</h4>
+    <div>
+      <h4>Oh no! Looks like your gem wasn't found. Please check your spelling and try again.</h4>
+    </div>
   <% end %>
+
 </div>
