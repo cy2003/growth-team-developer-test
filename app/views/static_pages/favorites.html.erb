@@ -1,4 +1,18 @@
 <div><h2>Gem Favorites</h2></div>
 <div>
-  <%= @favorite_gems %>
+  <div id="result"></div>
+  <script>
+
+    function storage(){
+      var result = document.getElementById("result")
+      var items =  JSON.parse(localStorage.getItem("rubygems"))
+      for (var i = 0; i < items.length; i++){
+          document.getElementById("result").innerHTML += ('<div class="ruby-gem"><a target="_blank" href="https://rubygems.org/gems/'+items[i]+'">' + items[i] + '</a><img class="star-pic" src="/assets/star-blue.png" alt="star pic"></div>')
+      }
+    }
+    storage()
+
+
+  </script>
+
 </div>

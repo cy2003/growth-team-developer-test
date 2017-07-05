@@ -1,6 +1,6 @@
 <div><h2>Search Gems</h2></div>
 <div>
-  <%= form_tag search_path do %>
+  <%= form_tag search_path, :html => {:onsubmit => "checkFavorites()"} do %>
     <input class="search" id="searchbar" name="query" placeholder="Search RubyGems" type="text" />
   <% end %>
 </div>
@@ -10,8 +10,9 @@
   <% elsif !!@rubygem %>
     <div><h4>Found Gem</h4></div>
     <div class="found-gem">
-      <div class="ruby-gem">
-        <%= link_to @rubygem["name"], "https://rubygems.org/gems/#{@rubygem["name"]}", target: "_blank" %><img class="star-pic" src="/assets/star-gray.png" alt="star pic"/>
+      <div class="<%= @rubygem["name"] %>">
+        <%= link_to @rubygem["name"], "https://rubygems.org/gems/#{@rubygem["name"]}", target: "_blank" %>
+        <img class="star-pic" src="/assets/star-gray.png" alt="star pic"/>
       </div>
     </div>
     <div><h4>Info</h4></div>
@@ -23,7 +24,9 @@
       <% else !!@rubygem["dependencies"]["development"] %>
         <% dependencies = @rubygem["dependencies"]["development"] %>
         <% dependencies.each do |x| %>
-          <div class="ruby-gem"><%= link_to x["name"], "https://rubygems.org/gems/#{x["name"]}", target: "_blank" %><img class="star-pic" src="/assets/star-gray.png" alt="star pic" />
+          <div class="<%= x["name"] %>">
+          <%= link_to x["name"], "https://rubygems.org/gems/#{x["name"]}", target: "_blank" %>
+          <img class="star-pic" src="/assets/star-gray.png" alt="star pic"/>
           </div>
         <% end %>
       <% end %>
@@ -32,6 +35,6 @@
     <div>
       <h4>Oh no! Looks like your gem wasn't found. Please check your spelling and try again.</h4>
     </div>
-  <% end %>
 
+  <% end %>
 </div>
