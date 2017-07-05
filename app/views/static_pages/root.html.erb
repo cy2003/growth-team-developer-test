@@ -1,6 +1,6 @@
 <div><h2>Search Gems</h2></div>
 <div>
-  <%= form_tag search_path, :html => {:onsubmit => "checkFavorites()"} do %>
+  <%= form_tag search_path do %>
     <input class="search" id="searchbar" name="query" placeholder="Search RubyGems" type="text" />
   <% end %>
 </div>
