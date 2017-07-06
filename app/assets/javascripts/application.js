@@ -41,7 +41,12 @@ $(document).ready(function(){
         $(this).attr("src", "/assets/star-gray.png")
         favoriteGems = favoriteGems.filter(item => item !== $(this).closest("div").first().text().replace(/\s+/g, ''))
         localStorage.setItem("rubygems", JSON.stringify(favoriteGems))
+        $("#result").remove("."+item)
       }
+    }
+
+    function removeGem(){
+
     }
 
     $(".star-pic").on("click", changeStar)
