@@ -1,13 +1,13 @@
+<%= render 'static_pages/navigation' %>
 
-
-<div class="right">
-  <div><h2>Search Gems</h2></div>
+<div class="container">
+  <div class="title-bar"><h2>Search Gems</h2></div>
   <div>
     <%= form_tag search_path do %>
-      <input class="search" id="searchbar" name="query" placeholder="Search" type="text" />
+      <input class="searchbar" id="searchbar" name="query" placeholder="Search" type="text" />
     <% end %>
   </div>
-  <div>
+  <div class="search-results">
     <% if !@rubygems %>
       <%= "" %>
     <% elsif !!@rubygem %>
@@ -18,8 +18,10 @@
           <img class="star-pic" src="/assets/star-gray.png" alt="star pic"/>
         </div>
       </div>
+      <br />
       <div><h4>Info</h4></div>
       <div><%= @rubygem["info"] %></div>
+      <br />
       <div><h4>Dependencies</h4></div>
       <div class="dependencies-gem">
         <% if @rubygem["dependencies"]["development"].empty? %>
@@ -35,9 +37,15 @@
         <% end %>
       </div>
     <% else %>
-      <div>
-        <h4>Oh no! Looks like your gem wasn't found. Please check your spelling and try again.</h4>
+      <div style="color:red; text-align:center">
+        <h4>Oh no! Looks like your gem can't be found.</h4>
       </div>
+      <style>
+        .searchbar{
+          border-color: red;
+          color:red;
+        }
+      </style>
 
     <% end %>
   </div>

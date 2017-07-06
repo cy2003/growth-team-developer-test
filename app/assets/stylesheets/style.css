@@ -23,19 +23,10 @@ body{
   font-family: "Lato";
   height: 100%;
   background: url("/assets/map.png") no-repeat;
-  background-size: auto 185%;
+  background-size: auto;
 }
 
-.search {
-  padding: 6px 30px 6px 30px;
-  margin: 10px;
-  background: url("/assets/magnifying-glass.png") no-repeat right center;
-  width: 25%;
-  height: 100%;
-  border-radius: 30px;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-}
+/*---------------------navbar-------------------------*/
 
 .navbar{
   margin-top: 10px;
@@ -46,12 +37,12 @@ body{
 
 .navbar img{
   margin-top: 1cm;
-  margin-left: 8.8cm;
+  margin-left: 10.5cm;
 }
 
 .nav-links{
   width:100px;
-  margin-left: 8.8cm;
+  margin-left: 10.5cm;
   margin-top: 7cm;
   font-size: 125%;
 }
@@ -61,7 +52,61 @@ body{
   background-color: rgb(0,0,0,0.9)
 }
 
-.right{
+a:hover{
+  color: #0099ff;
+}
+
+
+/*----------------------container------------------------*/
+
+.container{
   width: 60%;
   float: right;
+  margin-top: 4cm;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.searchbar {
+  padding: 15px 10px 15px 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: url("/assets/magnifying-glass.png") no-repeat;
+  background-position: 95% 50%;
+  width: 80%;
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-style: solid;
+  border-color: #d9d9d9;
+}
+
+.searchbar:hover{
+  border-color: #0099ff;
+}
+
+.searchbar input{
+
+}
+
+.title-bar {
+  margin-left: 30px;
+}
+
+.search-results{
+  margin-left: 30px;
+  margin-right: 150px;
+}
+
+#result{
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.star-pic{
+  margin-left: 10px;
+}
+
+h2:hover, h4:hover{
+  color: #0099ff;
 }
