@@ -31,24 +31,23 @@ $(document).ready(function(){
 
   checkFavorites()
 
-    function changeStar(){
-      if($(this).attr("src") == "/assets/star-gray.png"){
-        $(this).attr("src", "/assets/star-blue.png")
-        favoriteGems.push($(this).closest("div").first().text().replace(/\s+/g, ''))
-        localStorage.setItem("rubygems", JSON.stringify(favoriteGems))
-      }
-      else if ($(this).attr("src") == "/assets/star-blue.png"){
-        $(this).attr("src", "/assets/star-gray.png")
-        favoriteGems = favoriteGems.filter(item => item !== $(this).closest("div").first().text().replace(/\s+/g, ''))
-        localStorage.setItem("rubygems", JSON.stringify(favoriteGems))
-        $("#result").remove("."+item)
-      }
+  function changeStar(){
+    var targetItem = $(this).closest("div").first().text().replace(/\s+/g, '')
+    if($(this).attr("src") == "/assets/star-gray.png"){
+      $(this).attr("src", "/assets/star-blue.png")
+      favoriteGems.push(targetItem)
+      localStorage.setItem("rubygems", JSON.stringify(favoriteGems))
     }
-
-    function removeGem(){
-
+    else if ($(this).attr("src") == "/assets/star-blue.png"){
+      $(this).attr("src", "/assets/star-gray.png")
+      favoriteGems = favoriteGems.filter(item => item !== targetItem)
+      localStorage.setItem("rubygems", JSON.stringify(favoriteGems))
+      $("#result").remove("."+ targetItem)
+      location.reload()
     }
+  }
 
-    $(".star-pic").on("click", changeStar)
+
+  $(".star-pic").on("click", changeStar)
 
 })
